@@ -26,14 +26,14 @@ syntax: [Blog Link](https://redcoder.tistory.com/category/C_C%2B%2B%20%ED%94%84%
    >### 3. 낌새만 보이면 const를 들이대 보자
       >> const의 가장 큰 장점은 컴파일러가 변경을 반드시 제지하는 것을 지켜준다는 것이다.
       >> point const는 
-         point const는 4가지가 존재하며
+         point const는 4가지가 존재하며  
          <pre><code>
           char name[] = "rojae";                 // 문자열 선언
           char *p = name;                        // 비상수 데이터, 비상수 포인터
           const char* p = name;                  // 상수 데이터, 비상수 포인터
           char* const p = name;                 // 비상수 데이터, 상수 포인터
           const char* const p = name;           // 상수 데이터, 상수 포인터
-         </code></pre>
+         </code></pre>  
          => const가 ******(포인터) 전후로 어디에 위치하는지에 따라서 결정이 된다.
       
    >### 4. 객체를 사용하기 전에 반드시 그 객체를 초기화하자
