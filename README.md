@@ -26,8 +26,6 @@ syntax: [Blog Link](https://redcoder.tistory.com/category/C_C%2B%2B%20%ED%94%84%
    >### 3. 낌새만 보이면 const를 들이대 보자
       >> const의 가장 큰 장점은 컴파일러가 변경을 반드시 제지하는 것을 지켜준다는 것이다.
       >> point const는 4가지가 존재하며 다음과 같다.
-      
- 
 
       #### 이는 const가 *(포인터) 전후로 어디에 위치하는지에 따라서 결정이 된다.
 ```c
@@ -46,6 +44,8 @@ syntax: [Blog Link](https://redcoder.tistory.com/category/C_C%2B%2B%20%ED%94%84%
                     std::cout << text << '\n';
                 }
 ```
+        >> mutable을 사용하자
+        >> 상수 멤버 함수와 단순 멤버 함수의 중복을 줄이는 법
 
    >### 4. 객체를 사용하기 전에 반드시 그 객체를 초기화하자
    
