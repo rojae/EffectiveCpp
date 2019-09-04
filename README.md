@@ -26,7 +26,7 @@ syntax: [Blog Link](https://redcoder.tistory.com/category/C_C%2B%2B%20%ED%94%84%
    >### 3. 낌새만 보이면 const를 들이대 보자
       >> const의 가장 큰 장점은 컴파일러가 변경을 반드시 제지하는 것을 지켜준다는 것이다.
       >> point const는 4가지가 존재하며 다음과 같다.
-      >> 이는 const가 ******(포인터) 전후로 어디에 위치하는지에 따라서 결정이 된다.
+      >> 이는 const가 *(포인터) 전후로 어디에 위치하는지에 따라서 결정이 된다.
 ```c
           char name[] = "rojae";                 // 문자열 선언
           char *p = name;                        // 비상수 데이터, 비상수 포인터
