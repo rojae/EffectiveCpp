@@ -35,8 +35,16 @@ syntax: [Blog Link](https://redcoder.tistory.com/category/C_C%2B%2B%20%ED%94%84%
           const char* const p = name;           // 상수 데이터, 상수 포인터
 ```
        >> 이는 해당 멤버 함수가 상수 객체에 호출 가능한 상수 멤버 함수
-       >> 
-      
+       
+```c
+                void print(){
+                    std::cout << text << '\n';
+                }
+                void print() const{
+                    std::cout << text << '\n';
+                }
+```
+
    >### 4. 객체를 사용하기 전에 반드시 그 객체를 초기화하자
    
    >### 5. 작성 중..
