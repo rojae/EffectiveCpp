@@ -53,9 +53,18 @@ syntax: [Blog Link](https://redcoder.tistory.com/category/C_C%2B%2B%20%ED%94%84%
 
         >> 생성자에서 대입을 통한 초기화가 아닌 초기화 리스트를 사용하여 진행하자
         
+```c
+     Score::Score(const int& theKorean, const int& theEnglish, const int& theMath)
+       : korean(theKorean), english(theEnglish), math(theMath) {   }
+```
+
         >> 여러 번역 단위에 존재하는 비지역 정적 객체들의 초기화 순서 문제를 피하기 위해서 설계하자
            이는 비지역 정적 객체를 지역 정적 객체로 바꾸어주면 된다.
-
-
+```c
+      Score& score_sample(){
+        static Score sc;
+        return sc;
+}
+```
         
    >### 5. 작성 중..
