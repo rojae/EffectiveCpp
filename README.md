@@ -68,4 +68,40 @@ Score& score_sample(){
 }
 ```
         
-   >### 5. 작성 중..
+   >### 5. C++이 은근슬쩍 만들어 호출해 버리는 함수들에 촉각을 세우자
+          >> C++ 자동으로 생성자 소멸자 대입 연산자를 만들 수 있다.
+          >> 개발자가 직접 작성하면 자동 생성은 되지 않는다.
+          >> 복사 생성자는 다음과 같이 자동으로 생성된다.
+```c
+/*
+ * Made person: rojae
+ * Made date: 2019.09.05
+ * --- code description ---
+ *  복사 생성자는 어떻게 만들어지는가
+ *  작성하지 않았기 때문에 아래와 같이 자동으로 생성된다
+ *  NamedObject(const NamedObject& other) 
+ *      : nameValue(other.nameValue), objectValue(other.objectValue) { }
+ */
+ 
+#include<iostream>
+ 
+template<typename T>
+class NamedObject {
+        public:
+                NamedObject(const char *name, const T& value);
+                NamedObject(const std::string& name, const T& value);
+        private:
+                std::string nameValue;
+                T objectValue;
+};
+
+```
+          >> 하지만 자동으로 생성되지 않는 경우도 있다.
+             1. 기반 클래스에서 private로 복사 대입 연산자를 생성한 경우
+                파생 클래스에서 접근이 불가합니다
+             2. 데이터 멤버가 상수 객체인 경우
+                (const는 수정이 불가능 하기 때문에...)
+             3. 참조자를 사용하는 객체를 복사 대입 하는 경우
+                ( 다른 객체까지 영향이 미치기 때문에 컴파일이 거부됩니다 )
+
+   >### 6. 작성 중...
