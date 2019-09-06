@@ -105,4 +105,51 @@ class NamedObject {
     ( 다른 객체까지 영향이 미치기 때문에 컴파일이 거부됩니다 )
 
 
->### 6. 작성 중...
+>### 6. 컴파일러가 만들어낸 함수가 필요 없으면 이들의 사용을 금해 버리자
+
+> 복사 생성자를 금지하는 방법은 private를 통해서 막는 법이 통상적으로 쓰였다.
+```c
+  class HomeForSale{
+          public:
+		   ...
+          private:
+                  // private로 선언하여 복사 생성을 막는다
+                  HomeForSale(const HomeForSale&);
+                  HomeForSale& operator = (const HomeForSale&);
+                  int money;
+  };
+```
+
+> 하지만 이는 friend 함수를 통한 접근을 막을 수 없다
+
+> 이는 기반 클래스를 작성하고 제약조건을 주어 금지할 수 있다.
+```c
+class Uncopyable {        
+	protected:
+                // 파생된 객체들에 대해
+                Uncopyable(){}
+                ~Uncopyable(){}
+        private:
+                Uncopyable(const Uncopyable&);
+                Uncopyable& operator = (const Uncopyable&);
+};
+  class HomeForSale: private Uncopyable{
+          public:
+                  HomeForSale();
+                  HomeForSale(const int& cost) : money(cost)
+                  {   };
+                  friend person;        // friend 클래스를 선언하여 외부에서 private로 접속이 가능하게 된다
+                  friend HomeForSale& HomeForSale(const HomeForSale&);
+          private:
+                  // 1차적으로 private에서 복사 생성이 막아진다.
+                  // 하지만 막지 않는다면?
+                  // friend에서 복사 생성이 실행된다
+                  // 하지만 Uncopyable 클래스가 기반 클래스로
+                  // 기반 클래스의 private를 통해서 복사 생성이 금지된다 
+    	          HomeForSale(const HomeForSale&);
+                  HomeForSale& operator = (const HomeForSale&);
+                  int money;
+  };
+```
+>### 7. 작성 중...
+
