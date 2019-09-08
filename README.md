@@ -151,5 +151,42 @@ class Uncopyable {
                   int money;
   };
 ```
->### 7. 작성 중...
+>### 7. 다형성을 가진 기본 클래스에서는 소멸자를 반드시 가상 소멸자로 선언하자
+> 기반 클래스에서 파생된 파생 클래스의 소멸자에 대한 항목이다.
+> 기본 클래스 포인터를 통해서 파생 클래스 객체가 삭제될 때 그 기본 클래스에 비가상 소멸자가 있다면
+  프로그램 동작은 미정의 사항이다. (대개 파생 클래스 소멸자는 동작하지 않는다)
+```c
+class Base{
+        public:
+                Base(){}
+                ~Base(){}
+};
+
+class Derived1 : public Base{
+        public:
+                Derived1(): Base(){}
+                ~Derived1(){}
+};
+
+class Derived2 : public Base{
+        public:
+                Derived2(): Base(){}
+                ~Derived2(){}
+};
+
+int main(){
+        Base* p1 = new Derived1;
+        Base* p2 = new Derived2;
+        delete p1;
+        delete p2;
+        return 0;
+}
+```
+> 이를 해결하기 위해서 virtual을 사용하면 된다.
+- 하지만 항상 가상 소멸자를 사용하면 안된다. 
+1. STL 컨테이너 타입(string, vector, list, set trl::unordered_map 등등..)
+  - 위 타입을 상속 받는 클래스는 가상 소멸자를 사용한 삭제가 불가하다.
+    ( 가상 소멸자가 존재하지 않기 때문이다 )
+2. 가상 소멸자를 선언하는 것은 그 클래스에 가상 함수가 하나라도 들어 있는 경우에만 한정하자
+    ( 클래스 크기 문제 )
 
