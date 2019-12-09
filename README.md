@@ -10,7 +10,7 @@ syntax: [Blog Link](https://redcoder.tistory.com/category/C_C%2B%2B%20%ED%94%84%
 
 <hr/>
 
-## 목차 & 요약
+## 목차 & 요약 
 >### 1. C++를 언어들의 연합체로 바라보는 안목은 필수
 - STL 템플릿 C언어 객체 지향의 C++
 - pass by value vs pass by reference
